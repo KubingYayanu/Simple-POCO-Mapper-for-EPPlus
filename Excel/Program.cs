@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using Aurora.IO.Excel.Extensions;
+﻿using Aurora.IO.Excel.Extensions;
 using Excel.Models.Horizontal;
 using Excel.Models.Vertical;
-using Microsoft.Win32;
 using OfficeOpenXml;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace Excel
 {
@@ -27,7 +24,7 @@ namespace Excel
 
                 // Get sheet with horizontal mapping
                 var sheet = excel.Workbook.Worksheets.First();
-                
+
                 // Get list of teams based on automatically mapping of the header row
                 Console.WriteLine("List of teams based on automatically mapping of the header row");
                 var teams = sheet.GetRecords<Team>();
@@ -35,15 +32,15 @@ namespace Excel
                 {
                     Console.WriteLine($"{team.Name} - {team.FoundationYear} - {team.Titles}");
                 }
-                
+
                 // Get specific record from sheet based on automatically mapping the header row
                 Console.WriteLine("Team based on automatically mapping of the header row");
                 var teamRec = sheet.GetRecord<Team>(2);
                 Console.WriteLine($"{teamRec.Name} - {teamRec.FoundationYear} - {teamRec.Titles}");
-                
+
                 // Remove HeaderRow
                 sheet.DeleteRow(1);
-                
+
                 // Get list of teams based on mapping using attributes
                 Console.WriteLine("List of teams based on mapping using attributes");
                 var teamsAttr = sheet.GetRecords<TeamAttributes>();
@@ -51,12 +48,12 @@ namespace Excel
                 {
                     Console.WriteLine($"{team.Name} - {team.FoundationYear} - {team.Titles}");
                 }
-                
+
                 // Get specific record from sheet based on mapping using attributes
                 Console.WriteLine("Team based on mapping using attributes");
                 var teamAttr = sheet.GetRecord<TeamAttributes>(1);
                 Console.WriteLine($"{teamAttr.Name} - {teamAttr.FoundationYear} - {teamAttr.Titles}");
-                
+
                 // Get list of teams based on user created map
                 Console.WriteLine("List of teams based on user created map");
                 var teamsMap = sheet.GetRecords(TeamMap.Create());
@@ -64,7 +61,7 @@ namespace Excel
                 {
                     Console.WriteLine($"{team.Name} - {team.FoundationYear} - {team.Titles}");
                 }
-                
+
                 // Get specific record from sheet based on user created map
                 Console.WriteLine("Team based on user created map");
                 var teamMap = sheet.GetRecord<Team>(1, TeamMap.Create());

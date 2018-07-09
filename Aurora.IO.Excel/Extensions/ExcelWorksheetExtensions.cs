@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Aurora.IO.Excel.Mappings;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Aurora.IO.Excel.Mappings;
-using OfficeOpenXml;
 
 namespace Aurora.IO.Excel.Extensions
 {

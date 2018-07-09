@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Aurora.IO.Excel.Mappings.Attributes;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Aurora.IO.Excel.Mappings.Attributes;
-using OfficeOpenXml;
 
 namespace Aurora.IO.Excel.Mappings
 {
@@ -47,7 +47,7 @@ namespace Aurora.IO.Excel.Mappings
             {
                 // Map by column / row header name
                 var props = type.GetProperties().ToList();
-                
+
                 // Determine end dimension for the header
                 var endDimension = map.MappingDirection == ExcelMappingDirectionType.Horizontal
                     ? sheet.Dimension.End.Column
